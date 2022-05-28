@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.app {
+    @apply justify-center items-center flex flex-col
+}
+
+/* FORM STYLES */
+.form {
+    @apply flex flex-col w-[450px] h-[600px] border-2 bg-blue-100
+    drop-shadow-2xl rounded-md items-center justify-center mt-[4rem]
+}
+.form > input {
+    @apply bg-transparent outline-none m-4 border-b-2 w-4/5 border-gray-400 
+}
+.form > textarea {
+    @apply bg-transparent outline-none m-4 w-4/5 border-2 rounded-md border-gray-400 
+}
+.form > button {
+    @apply bg-red-500 w-2/4 p-4 hover:bg-red-600 text-white 
+    font-semibold
+}
+.form > h1 {
+    @apply font-bold text-[#97C4B8] text-[2rem] mb-4
+}
