@@ -38,7 +38,7 @@ const Zadatak = ({ name, num, text, id}) => {
       <h1 onClick={openText}>{name}</h1>
       </div>
       <div className={isOpen ? "dropdown" : "hidden"}>
-        <p>`zadatak ${num}`</p>
+        <p className="font-semibold underline underline-offset-1">Zadatak nosi {num} bodova</p>
         <p>{text}</p>
       </div>
       <div className={toggleEdit ? "edit" : "hidden"}>
