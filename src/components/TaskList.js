@@ -1,15 +1,23 @@
-import { useSelector } from "react-redux"
-import {v4 as uuidv4} from "uuid"
+import { useSelector } from "react-redux";
+import Zadatak from "./Zadatak";
 
 const TaskList = () => {
-  const tasks = useSelector((state) => state.task.value)
+  const tasks = useSelector((state) => state.task.value);
   return (
     <div>
-      {Object.values(tasks).map((task) => {return (<div key={uuidv4()}>{task.name}</div>)})}
-      TASKKKS
-      
+      {tasks && tasks.map((task) => {
+        return (
+          <Zadatak
+            key={task.id}
+            id={task.id}
+            name={task.name}
+            num={task.num}
+            text={task.text}
+          />
+        );
+      })}
     </div>
-  )
-}
+  );
+};
 
-export default TaskList
+export default TaskList;

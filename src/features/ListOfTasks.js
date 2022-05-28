@@ -8,8 +8,12 @@ export const taskListSlice = createSlice({
     addTask: (state, action) => {
         state.value.push(action.payload)
     },
-    editTask: (state, action) => {},
-    delTask: (state, action) => {},
+    delTask: (state, action) => {
+      state.value = state.value.filter((task) => task.id !== action.payload.id)
+    },
+    editTask: (state, action) => {
+      
+    },
   },
 });
 

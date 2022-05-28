@@ -24,3 +24,13 @@
 .form > h1 {
     @apply font-bold text-[#97C4B8] text-[2rem] mb-4
 }
+
+/* ZADATAK STYLES */
+
+.zadatak {
+    @apply flex flex-col min-h-[300px] w-[450px] bg-blue-100 m-3 rounded-md
+    drop-shadow-2xl text-[#5d7971] text-[1.2rem]
+}
+.dropdown {
+    @apply bg-blue-300
+}
