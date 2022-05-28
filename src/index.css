@@ -28,9 +28,36 @@
 /* ZADATAK STYLES */
 
 .zadatak {
-    @apply flex flex-col min-h-[300px] w-[450px] bg-blue-100 m-3 rounded-md
-    drop-shadow-2xl text-[#5d7971] text-[1.2rem]
+    @apply flex flex-col  w-[450px] bg-blue-100 m-3 rounded-md
+    drop-shadow-2xl text-[#3a4b47] text-[1.2rem] items-center p-4
+}
+.header {
+    @apply w-4/5 h-fit mt-3 mb-4
+}
+.header > h1 {
+    @apply font-bold uppercase text-xl cursor-pointer
+}
+.compleated {
+    @apply text-gray-400
 }
 .dropdown {
-    @apply bg-blue-300
+    @apply bg-blue-200 w-4/5 rounded m-6 max-w-[450px] grid p-4
+}
+.dropdown > p {
+    @apply break-all
+}
+.options {
+    @apply flex flex-row justify-between
+}
+.icon {
+    @apply h-[35px] w-[35px] cursor-pointer 
+}
+.edit {
+    @apply flex bg-blue-200 p-4 mb-4
+}
+.edit > input {
+    @apply bg-transparent border-b-2 outline-none m-2
+}
+.edit > button {
+    @apply px-3 bg-red-600 font-semibold text-white text-[1.2rem] rounded m-2
 }

@@ -7,26 +7,49 @@ import { useState } from "react";
 const Zadatak = ({ name, num, text, id}) => {
   const dispatch = useDispatch()
   const [newName, setnewName] = useState()
-  
+  const [toggleEdit, settoggleEdit] = useState(false)
+  const [isChecked, setisChecked] = useState(false)
+  const [isOpen, setisOpen] = useState(false)
+
+  // Toggling edit menu open/close
+  const toggleEditMenu = () => {
+    settoggleEdit(!toggleEdit)
+  }
+
   // Brisanje zadataka u listi
   const deleteHandler = () => {
     dispatch(delTask({id}))
   }
 
+  // Toggling comleated/uncompleated
+  const checkedHandler = () => {
+    setisChecked(!isChecked)
+  }
+
+  // Toggle text box open/close
+  const openText = () => {
+    setisOpen(!isOpen)
+  }
+
   return (
     <div className="zadatak">
-      <h1>{name}</h1>
-      <div className="dropdown">
-        <p>{num}</p>
+      <div className="header">
+      <p className={isChecked ? "text-gray-400" : "text-transparent"}>Comleated</p>
+      <h1 onClick={openText}>{name}</h1>
+      </div>
+      <div className={isOpen ? "dropdown" : "hidden"}>
+        <p>`zadatak ${num}`</p>
         <p>{text}</p>
       </div>
-      <div>
+      <div className={toggleEdit ? "edit" : "hidden"}>
         <input type="text" placeholder="Promjenite naziv" onChange={e => setnewName(e.target.value)}/>
-        <button onClick={() => {dispatch(editTask({id: id, name: newName}))}}>Update</button>
+        <button onClick={() => {dispatch(editTask({id: id, name: newName}));settoggleEdit(!toggleEdit)}}>Update</button>
       </div>
-      <FaRegTrashAlt onClick={deleteHandler}/>
-      <AiTwotoneEdit />
-      <input type="checkbox" />
+      <div className="options">
+        <FaRegTrashAlt onClick={deleteHandler} className="icon"/>
+        <AiTwotoneEdit onClick={toggleEditMenu} className="icon"/>
+        <input type="checkbox" checked={isChecked} onChange={checkedHandler} className="icon"/>
+      </div>
     </div>
   );
 };
