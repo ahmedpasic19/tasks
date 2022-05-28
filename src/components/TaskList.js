@@ -3,6 +3,7 @@ import Zadatak from "./Zadatak";
 
 const TaskList = () => {
   const tasks = useSelector((state) => state.task.value);
+
   return (
     <div>
       {tasks && tasks.map((task) => {

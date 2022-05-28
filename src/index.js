@@ -3,14 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-import taskReducer from "./features/ListOfTasks"
-
-const store = configureStore({
-  reducer: {
-    task: taskReducer,
-  }
-})
+import { PersistGate } from "redux-persist/integration/react";
+import store, {persistor} from "./features/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Provider store={store}><App /></Provider>);
+root.render(
+<Provider store={store}>
+  <PersistGate persistor={persistor} >
+    <App />
+  </PersistGate>
+</Provider>
+);

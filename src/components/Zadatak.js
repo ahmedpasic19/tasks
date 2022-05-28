@@ -1,18 +1,16 @@
 import { FaRegTrashAlt } from "react-icons/fa";
 import { AiTwotoneEdit } from "react-icons/ai";
-import { useSelector, useDispatch } from "react-redux/es/exports";
+import {  useDispatch } from "react-redux/es/exports";
+import { delTask, editTask } from "../features/ListOfTasks";
 import { useState } from "react";
-import { delTask } from "../features/ListOfTasks";
 
 const Zadatak = ({ name, num, text, id}) => {
-  const tasks = useSelector((state) => state.task.value);
-  const [newTasksArr, setnewTasksArr] = useState([])
   const dispatch = useDispatch()
+  const [newName, setnewName] = useState()
   
   // Brisanje zadataka u listi
   const deleteHandler = () => {
     dispatch(delTask({id}))
-    console.log(tasks)
   }
 
   return (
@@ -21,6 +19,10 @@ const Zadatak = ({ name, num, text, id}) => {
       <div className="dropdown">
         <p>{num}</p>
         <p>{text}</p>
+      </div>
+      <div>
+        <input type="text" placeholder="Promjenite naziv" onChange={e => setnewName(e.target.value)}/>
+        <button onClick={() => {dispatch(editTask({id: id, name: newName}))}}>Update</button>
       </div>
       <FaRegTrashAlt onClick={deleteHandler}/>
       <AiTwotoneEdit />
