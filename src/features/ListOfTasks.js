@@ -6,7 +6,7 @@ export const taskListSlice = createSlice({
   initialState: initialState,
   reducers: {
     addTask: (state, action) => {
-        state.value = action.payload
+        state.value.push(action.payload)
     },
     editTask: (state, action) => {},
     delTask: (state, action) => {},
